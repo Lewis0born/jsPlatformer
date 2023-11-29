@@ -7,6 +7,15 @@ const c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 
+// Create background object
+const backgroundLevel1 = new Sprite({
+    position: {
+        x: 0,
+        y: 0
+    },
+    imageSrc: './assets/backgroundLevel1.png'
+});
+
 // Create player object
 const player = new Player();
 
@@ -26,9 +35,8 @@ const keys = {
 // animation loop
 function animate() {
     window.requestAnimationFrame(animate);
-    // fill canvas 
-    c.fillStyle = 'white';
-    c.fillRect(0, 0, canvas.width, canvas.height);
+    // draw background
+    backgroundLevel1.draw();
 
     // reset velocity, change based on key pressed
     player.velocity.x = 0;
