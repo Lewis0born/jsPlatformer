@@ -7,7 +7,28 @@ const c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 
-// fill canvas 
-c.fillStyle = 'white';
-c.fillRect(0, 0, canvas.width, canvas.height);
+let playerPositionY = 100;
+let playerHeight = 100;
+let playerBottom = playerPositionY + playerHeight;
 
+// animation loop
+function animate() {
+    window.requestAnimationFrame(animate);
+    // fill canvas 
+    c.fillStyle = 'white';
+    c.fillRect(0, 0, canvas.width, canvas.height);
+
+    // create player (red rect for now)
+    c.fillStyle = 'red';
+    c.fillRect(100, playerPositionY, 100, playerHeight);
+
+    // GRAVITY, increase player Y position until bottom == canvas height
+    if (playerBottom < canvas.height){
+        playerPositionY++;
+        playerBottom = playerPositionY + 100;
+    }
+    
+
+}
+
+animate();
