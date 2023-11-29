@@ -30,7 +30,10 @@ class Player {
 
     // Properties to change/update
     update() {
+        // update player position based on current velocity
+        this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+        this.sides.bottom = this.position.y + this.height;
 
         // Apply gravity (constant incrementing of y velocity until bottom reached)
         if (this.sides.bottom + this.velocity.y < canvas.height){
