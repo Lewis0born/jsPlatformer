@@ -8,6 +8,13 @@ class Player {
             y: 100
         }
 
+        this.velocity = {
+            x: 0,
+            y: 0
+        }
+
+        this.gravity = 1;
+
         this.width = 100;
         this.height = 100;
         this.sides = {
@@ -23,10 +30,12 @@ class Player {
 
     // Properties to change/update
     update() {
-        // GRAVITY, increase player Y position until bottom == canvas height
-        if (this.sides.bottom < canvas.height){
-            this.position.y++;
+        this.position.y += this.velocity.y;
+
+        // Apply gravity (constant incrementing of y velocity until bottom reached)
+        if (this.sides.bottom + this.velocity.y < canvas.height){
+            this.velocity.y += this.gravity;
             this.sides.bottom = this.position.y + this.height;
-        }
+        } else this.velocity.y = 0;
     }
 }
