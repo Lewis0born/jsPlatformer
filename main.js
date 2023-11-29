@@ -7,6 +7,12 @@ const c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 
+// COLLISIONS
+// Store new 2D array
+const parsedCollisions = collisionsLevel1.parse2D();
+// For each symbol in each row, push a collision to collisionBlocks
+const collisionBlocks = parsedCollisions.createObjectsFrom2D();
+
 // Create background object
 const backgroundLevel1 = new Sprite({
     position: {
@@ -37,6 +43,10 @@ function animate() {
     window.requestAnimationFrame(animate);
     // draw background
     backgroundLevel1.draw();
+
+    collisionBlocks.forEach(collisionBlock => {
+        collisionBlock.draw();
+    })
 
     // reset velocity, change based on key pressed
     player.velocity.x = 0;
