@@ -22,8 +22,11 @@ const backgroundLevel1 = new Sprite({
     imageSrc: './assets/backgroundLevel1.png'
 });
 
-// Create player object
-const player = new Player();
+// Create player object 
+// pass collisionBlocks so we can check if collision exists
+const player = new Player({
+    collisionBlocks
+});
 
 // Listen what keys are being pressed
 const keys = {
